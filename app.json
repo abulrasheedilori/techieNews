@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "techieNews",
+    "slug": "techieNews",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/brainstem_logo_black_white.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/images/brainstem_logo_black_white.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/brainstem_logo_black_white.png",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
