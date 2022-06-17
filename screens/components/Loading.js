@@ -1,6 +1,6 @@
 import React from "react";
 import { View, ActivityIndicator, Text } from "react-native";
-import { styles } from "../../login_screen/LoginStyles";
+import { styles } from "../login_screen/LoginStyles";
 import { Colors } from "react-native-paper";
 
 const Loading = () => {

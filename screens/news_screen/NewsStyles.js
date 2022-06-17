@@ -9,9 +9,9 @@ export const styles = StyleSheet.create({
     marginHorizontal: "3%",
     marginVertical: 5,
     borderWidth: 3,
-    backgroundColor: Colors.amber900,
+    backgroundColor: Colors.transparent,
     borderRadius: 10,
-    borderColor: Colors.amber500,
+    borderColor: Colors.white,
     elevation: 1,
   },
 
@@ -25,9 +25,9 @@ export const styles = StyleSheet.create({
 
   newsTitle: {
     ...TextStyles.title,
-    fontSize: 22,
+    fontSize: 16,
     padding: 10,
     textAlign: "center",
-    color: Colors.white,
+    color: Colors.black,
   },
 });

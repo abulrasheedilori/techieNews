@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -7,14 +7,12 @@ import {
   TouchableOpacity,
   TextInput,
   ScrollView,
-  Alert,
 } from "react-native";
 import { styles, platform } from "../login_screen/LoginStyles";
-// import { styles as RegStyle } from "./RegStyles";
 import { TextStyles } from "../../assets/constants/TextStyles";
 import { StatusBar } from "expo-status-bar";
 import { Colors } from "react-native-paper";
-import db from "../../db/db";
+import User from "../../auth/User";
 
 const RegScreen = ({ navigation }) => {
   const [firstName, setFirstName] = useState("");
@@ -23,69 +21,12 @@ const RegScreen = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [mobile, setMobile] = useState("");
 
-  useEffect(() => {
-    createTable();
-  }, []);
-
   const registerHandler = () => {
-    setData(firstName, lastName, email, password, mobile);
-  };
-
-  //create new table if it does not exit
-  const createTable = () => {
-    db.transaction((txn) => {
-      // Create the table and define the properties of the columns
-      txn.executeSql(
-        "CREATE TABLE IF NOT EXISTS users(user_id INTEGER PRIMARY KEY AUTOINCREMENT, first_name VARCHAR(30), last_name VARCHAR(30), email VARCHAR(30), password VARCHAR(30), mobile VARCHAR(30))"
-      );
-    });
-  };
-
-  //authenticate and set data to the db
-  const setData = async (firstName, lastName, email, password, mobile) => {
-    if (
-      firstName.length <= 3 ||
-      lastName.length <= 3 ||
-      email.length <= 6 ||
-      password.length < 6 ||
-      mobile.length <= 5
-    ) {
-      Alert.alert("Warning!", "Please, all fields are required", [
-        { text: "Try again", onPress: () => {} },
-      ]);
-    } else {
-      try {
-        db.transaction((txn) => {
-          txn.executeSql(
-            "INSERT INTO users (first_name, last_name, email, password, mobile) VALUES (?,?,?,?,?)",
-            [firstName, lastName, email, password, mobile],
-            (txn, result) => {
-              console.log("Results", result);
-              if (result.rowsAffected > 0) {
-                Alert.alert(
-                  "Success",
-                  "You are Registered Successfully!",
-                  [
-                    {
-                      text: "Go to Login",
-                      onPress: () => navigation.navigate("Login"),
-                    },
-                  ],
-                  { cancelable: false }
-                );
-              } else {
-                Alert.alert("Error!", "Registration Failed, Please try again");
-              }
-            },
-            (txn, error) => {
-              console.log("Error", error);
-            }
-          );
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    }
+    //create a user object
+    const newUser = new User(firstName, lastName, email, password, mobile);
+    //authenticate our newUser
+    //little auth is done here for demonstrative purpose 
+    newUser.authenticateUserInput(newUser, navigation);
   };
 
   return (

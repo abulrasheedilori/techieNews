@@ -14,13 +14,14 @@ export const styles = StyleSheet.create({
   card: {
       flexDirection: "row",
       justifyContent: "flex-start",
-      width: "96%",
+      width: "90%",
       height: "auto",
-      marginHorizontal: "2%",
+      marginHorizontal: "5%",
       marginVertical: 10,
-      elevation: 5,
-      borderRadius: 5,
-      backgroundColor: Colors.amber300
+      elevation: 1,
+      shadowColor: Colors.amber900,
+      borderRadius: 1,
+      backgroundColor: Colors.transparent
   },
 
   label: {

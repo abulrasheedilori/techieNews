@@ -24,8 +24,8 @@ const LoginScreen = ({ navigation }) => {
 
   //handle login button
   const loginHandler = () => {
-    authenticateLogin(email, password);
-  };
+    authenticateLogin(email, password, navigation);
+};
 
   //Authenticate user's input [just a simple scope for demonstration]
   const authenticateLogin = (email, password) => {

@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text } from "react-native";
-import { styles as NewsStyles } from ".././NewsStyles";
+import { styles as NewsStyles } from "../news_screen/NewsStyles";
 
 const NewsItem = (props) => {
   return (

@@ -10,14 +10,14 @@ import {
 import { StatusBar } from "expo-status-bar";
 import { styles } from "../login_screen/LoginStyles";
 import { Colors } from "react-native-paper";
-import Loading from "./components/Loading";
+import Loading from "../components/Loading";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getListOfNewsIds } from "../../app_store/listOfNewsIdsSlice";
 import { getNewsItem } from "../../app_store/newsSlice";
 
 //lazy loading component
-const LazyNewsItem = React.lazy(() => import("./components/NewsItem"));
+const LazyNewsItem = React.lazy(() => import("../components/NewsItem"));
 
 const NewsScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -36,7 +36,7 @@ const NewsScreen = ({ navigation }) => {
     return () => {
       clearTimeout(timedLoadMoreNews);
     };
-  }, []);
+  }, [news]);
 
   const loadMoreNews = async () => {
     var i = listOfNewsIds.length - pageSize;
